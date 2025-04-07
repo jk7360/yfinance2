@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: pip install yfinance pandas
 
-      - name: Run Python Script Repeatedly (for 2 hours with 15s interval)
+      - name: Run Python Script Repeatedly (for 3.5 hours interval)
         run: |
            for i in {1..840}; do
                python options.py || echo "Error on run $i"  # Continue even if the script fails

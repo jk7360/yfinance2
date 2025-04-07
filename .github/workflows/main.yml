@@ -33,4 +33,5 @@ jobs:
           git config --global user.email "jrlim9595@gmail.com"
           git config --global user.name "jk7360"
           git add SPY_option_*.csv
-          git diff --quiet --exit-code || (git commit -m "Add SPY options data CSV" && git push)
+          git commit -m "Add SPY options data CSV" || echo "No changes to commit"
+          git push

@@ -23,9 +23,9 @@ jobs:
 
       - name: Run Python Script Repeatedly (for 3.5 hours interval)
         run: |
-           for i in {1..840}; do
+           for i in {1..3}; do
                python options.py || echo "Error on run $i"  # Continue even if the script fails
-               sleep 15  # Wait for 15s before the next run
+               #sleep 15  # Wait for 15s before the next run
            done
 
       - name: Commit CSV to Repository (if updated)

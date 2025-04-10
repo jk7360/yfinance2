@@ -25,7 +25,7 @@ header = ["Timestamp", "SPY price", "strike",
 
 # Get today's date for file name
 today_str = datetime.now().strftime('%Y-%m-%d')
-csv_file = f"SPY_option_{expiration_date}.csv"
+csv_file = f"SPY_option_{expiration_date}-02.csv"
 
 def get_spy_options(expiration_date):
     spy_price = get_latest_spy_price()

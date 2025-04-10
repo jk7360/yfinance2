@@ -1,4 +1,4 @@
-import yfinance as yf
+import yfinance as yf 
 import pandas as pd
 from datetime import datetime
 import os 
@@ -25,27 +25,18 @@ header = ["Timestamp", "SPY price", "strike",
 
 # Get today's date for file name
 today_str = datetime.now().strftime('%Y-%m-%d')
-csv_file = f"SPY_option_{expiration_date}-02.csv"
+csv_file = f"SPY_option_{expiration_date}-01.csv"
 
 def get_spy_options(expiration_date):
     spy_price = get_latest_spy_price()
 
-    # Round to nearest 5
-    nearest_strike = round(spy_price / 5) * 5
+    # Fixed 9 strike prices centered around 520 with $5 intervals
+    selected_strikes = [500 + 5 * i for i in range(12)]
 
     # Get options chain
     options_chain = spy.option_chain(expiration_date)
     calls = options_chain.calls
     puts = options_chain.puts
-
-    # Find nearby strikes
-    strikes = sorted(calls['strike'].unique())
-    if nearest_strike not in strikes:
-        strikes.append(nearest_strike)
-        strikes.sort()
-
-    idx = strikes.index(nearest_strike)
-    selected_strikes = strikes[max(0, idx - 4): idx + 5]
 
     # Filter and rename
     def filter_and_rename(df, kind):

@@ -1,6 +1,9 @@
 name: Options2
 
-
+on:
+  schedule:
+    - cron: '30 17 * * 1-5'
+  workflow_dispatch:
 
 jobs:
   run-python-script:
@@ -19,7 +22,7 @@ jobs:
 
       - name: Run Python Script Repeatedly (for 3.5 hours interval)
         run: |
-           for i in {1..1680}; do
+           for i in {1..840}; do
                python options.py || echo "Error on run $i"
                sleep 15
            done

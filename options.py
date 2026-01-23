@@ -30,8 +30,8 @@ csv_file = f"SPY_option_{expiration_date}-02.csv"
 def get_spy_options(expiration_date):
     spy_price = get_latest_spy_price()
 
-    # Fixed 9 strike prices centered around 520 with $5 intervals
-    selected_strikes = [660 + 5 * i for i in range(12)]
+    # Fixed values around current strike price with $30 above and $30 below
+    selected_strikes = [690 + 5 * i for i in range(12)]
 
     # Get options chain
     options_chain = spy.option_chain(expiration_date)

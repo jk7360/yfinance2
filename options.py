@@ -31,7 +31,7 @@ def get_spy_options(expiration_date):
     spy_price = get_latest_spy_price()
 
     # Fixed values around current strike price with $30 above and $30 below
-    selected_strikes = [690 + 5 * i for i in range(12)]
+    selected_strikes = [750 + 5 * i for i in range(12)]
 
     # Get options chain
     options_chain = spy.option_chain(expiration_date)
